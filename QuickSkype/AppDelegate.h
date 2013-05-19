@@ -7,9 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "SkypeClient.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject
+<NSApplicationDelegate, SkypeClientDelegate> {
+    SkypeClient *_skypeClient;
+}
 
+
+@property (unsafe_unretained) IBOutlet NSTextView *textView;
 @property (assign) IBOutlet NSWindow *window;
+- (IBAction)replyClicked:(id)sender;
 
 @end

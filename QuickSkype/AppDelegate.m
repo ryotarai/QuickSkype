@@ -15,4 +15,20 @@
     // Insert code here to initialize your application
 }
 
+- (void)awakeFromNib {
+    _skypeClient = [[SkypeClient alloc] init];
+    [_skypeClient setDelegate:self];
+}
+
+// PopUpButton
+- (void)reloadPopUpButton {
+    NSArray *chats = [_skypeClient.chatManager latestChats];
+    
+}
+
+
+
+- (IBAction)replyClicked:(id)sender {
+    NSLog(@"%@", self.textView.textStorage.string);
+}
 @end
