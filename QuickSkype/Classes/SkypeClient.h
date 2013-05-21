@@ -13,13 +13,13 @@
 
 @protocol SkypeClientDelegate <NSObject>
 
-@required
 @optional
+- (void)skypeClientNewMessage:(Message *)message;
 
 @end
 
 @interface SkypeClient : NSObject
-<SkypeAPIDelegate>
+<SkypeAPIDelegate, ChatManagerDelegate>
 
 @property ChatManager* chatManager;
 @property(assign) id<SkypeClientDelegate> delegate;

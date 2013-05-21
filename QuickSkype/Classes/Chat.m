@@ -19,4 +19,9 @@
     return self;
 }
 
+- (void)addMessage:(Message *)message {
+    message.chat = self;
+    [_messages setObject:message forKey:message.identity];
+}
+
 @end

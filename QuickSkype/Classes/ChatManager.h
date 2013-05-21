@@ -7,17 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Message.h"
+
+@protocol ChatManagerDelegate <NSObject>
+
+@optional
+- (void)chatManagerMessageSatisfied:(Message *)message;
+
+@end
 
 @interface ChatManager : NSObject {
     NSMutableDictionary *_tempMessages; // messageId -> Message
-    NSMutableDictionary *_messageChatMap; // messageId -> chatName
-    NSMutableArray *_latestChatNames; // chatName
 }
 
+@property(assign) id<ChatManagerDelegate> delegate;
 @property NSMutableDictionary* chats; // chatName -> Chat
 
-- (NSArray *)latestChats;
-- (void)bodyReceived:(NSString *)body ForMessageId:(NSNumber *)messageId;
-- (void)chatNameReceived:(NSString *)chatName ForMessageId:(NSNumber *)messageId;
+- (void)newMessage:(NSNumber *)messageId;
+- (void)bodyReceived:(NSString *)body forMessageId:(NSNumber *)messageId;
+- (void)chatNameReceived:(NSString *)chatName forMessageId:(NSNumber *)messageId;
 
 @end

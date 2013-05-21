@@ -8,10 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class Chat;
+
 @interface Message : NSObject
 
-@property NSInteger identity;
+@property NSNumber* identity;
 @property NSString* chatName;
 @property NSString* body;
+@property Chat* chat;
+
+- (BOOL)isSatisfied;
 
 @end

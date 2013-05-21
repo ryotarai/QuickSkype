@@ -10,6 +10,13 @@
 #import "Message.h"
 #import "Chat.h"
 
+@interface ChatManager ()
+
+- (void)_checkSatisfiedMessage:(Message *)message;
+- (void)_addMessageToChat:(Message *)message;
+
+@end
+
 @implementation ChatManager
 
 - (id)init
@@ -17,56 +24,53 @@
     self = [super init];
     if (self) {
         _tempMessages = [[NSMutableDictionary alloc] init];
-        _messageChatMap = [[NSMutableDictionary alloc] init];
-        _latestChatNames = [[NSMutableArray alloc] init];
         _chats = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
 
-- (NSArray *)latestChats {
-    NSMutableArray *chats = [[NSMutableArray alloc] init];
-    for (NSString *chatName in _latestChatNames) {
-        [chats addObject:[_chats objectForKey:chatName]];
+- (void)_checkSatisfiedMessage:(Message *)message {
+    if ([message isSatisfied]) {
+        [self _addMessageToChat:message];
+        if (_delegate && [_delegate respondsToSelector:@selector(chatManagerMessageSatisfied:)]) {
+            [_delegate chatManagerMessageSatisfied:message];
+        }
     }
-    return [chats copy];
 }
 
-- (void)bodyReceived:(NSString *)body ForMessageId:(NSNumber *)messageId {
+- (void)_addMessageToChat:(Message *)message {
+    Chat *chat = [_chats objectForKey:message.chatName];
+    if (!chat) {
+        chat = [[Chat alloc] init];
+        chat.name = message.chatName;
+        [_chats setObject:chat forKey:message.chatName];
+    }
+    [chat addMessage:message];
+}
+
+- (void)newMessage:(NSNumber *)messageId {
+    Message *message = [[Message alloc] init];
+    message.identity = messageId;
+    [_tempMessages setObject:message forKey:messageId];
+}
+
+- (void)bodyReceived:(NSString *)body forMessageId:(NSNumber *)messageId {
     NSLog(@"bodyReceived: %@, %@", body, messageId);
     
     Message *message = [_tempMessages objectForKey:messageId];
-    if (!message) {
-        NSString *chatName = [_messageChatMap objectForKey:messageId];
-        if (chatName) {
-            Chat *chat = [_chats objectForKey:chatName];
-            message = [chat.messages objectForKey:messageId];
-        } else {
-            message = [[Message alloc] init];
-            [_tempMessages setObject:message forKey:messageId];
-        }
-    }
     message.body = body;
+    
+    [self _checkSatisfiedMessage:message];
 }
 
-- (void)chatNameReceived:(NSString *)chatName ForMessageId:(NSNumber *)messageId {
+- (void)chatNameReceived:(NSString *)chatName forMessageId:(NSNumber *)messageId {
     NSLog(@"chatNameReceived: %@, %@", chatName, messageId);
-    
-    Chat *chat = [_chats objectForKey:chatName];
-    if (!chat) {
-        chat = [[Chat alloc] init];
-        [_chats setObject:chat forKey:chatName];
-    }
 
     Message *message = [_tempMessages objectForKey:messageId];
-    if (message) {
-        [chat.messages setObject:message forKey:messageId];
-        [_messageChatMap setObject:chatName forKey:messageId];
-        [_tempMessages removeObjectForKey:messageId];
-    }
+    message.chatName = chatName;
     
-    [_latestChatNames removeObject:chatName];
-    [_latestChatNames insertObject:chatName atIndex:0];
+    [self _checkSatisfiedMessage:message];
 }
+
 
 @end

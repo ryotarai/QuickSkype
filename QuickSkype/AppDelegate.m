@@ -22,11 +22,13 @@
 
 // PopUpButton
 - (void)reloadPopUpButton {
-    NSArray *chats = [_skypeClient.chatManager latestChats];
     
 }
 
-
+// SkypeClientDelegate
+- (void)skypeClientNewMessage:(Message *)message {
+    NSLog(@"skypeClientNewMessage: %@", message);
+}
 
 - (IBAction)replyClicked:(id)sender {
     NSLog(@"%@", self.textView.textStorage.string);

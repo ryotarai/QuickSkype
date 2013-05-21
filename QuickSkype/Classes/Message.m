@@ -10,4 +10,8 @@
 
 @implementation Message
 
+- (BOOL)isSatisfied {
+    return _identity && _chatName && _body;
+}
+
 @end

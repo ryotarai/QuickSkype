@@ -7,9 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Message.h"
 
-@interface Chat : NSObject
+@interface Chat : NSObject {
+    NSMutableDictionary *_messages;
+}
 
-@property NSMutableDictionary *messages;
+@property NSString *name;
+
+- (void)addMessage:(Message *)message;
 
 @end
