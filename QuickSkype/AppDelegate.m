@@ -34,6 +34,7 @@
 // SkypeClientDelegate
 - (void)skypeClientNewMessage:(Message *)message {
     NSLog(@"skypeClientNewMessage: %@", message);
+    [self reloadPopUpButton];
     
 }
 

@@ -84,6 +84,13 @@
         NSString *chatName = [aNotificationString substringWithRange:[result rangeAtIndex:2]];
         
         [_chatManager chatNameReceived:chatName forMessageId:messageId];
+        
+        [SkypeAPI sendSkypeCommand:[NSString stringWithFormat:@"GET CHAT %@ FRIENDLYNAME", chatName]];
+    }
+    
+    result = [self _regexMatch:aNotificationString with:@"CHAT (.+) FRIENDLYNAME (.+)"];
+    if (result) {
+        
     }
 }
 
