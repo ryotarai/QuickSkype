@@ -29,6 +29,10 @@
     return self;
 }
 
+- (NSArray *)chats {
+    return [_chats allValues];
+}
+
 - (void)_checkSatisfiedMessage:(Message *)message {
     if ([message isSatisfied]) {
         [self _addMessageToChat:message];

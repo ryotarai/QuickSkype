@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Chat.h"
 
 @implementation AppDelegate
 
@@ -22,12 +23,18 @@
 
 // PopUpButton
 - (void)reloadPopUpButton {
-    
+    NSMenu *menu = [[NSMenu alloc] init];
+    for (Chat *chat in [_skypeClient.chatManager chats]) {
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:chat.name action:NULL keyEquivalent:@""];
+        [menu insertItem:item atIndex:0];
+    }
+    _chatsPopUpButton.menu = menu;
 }
 
 // SkypeClientDelegate
 - (void)skypeClientNewMessage:(Message *)message {
     NSLog(@"skypeClientNewMessage: %@", message);
+    
 }
 
 - (IBAction)replyClicked:(id)sender {

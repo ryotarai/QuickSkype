@@ -18,11 +18,12 @@
 
 @interface ChatManager : NSObject {
     NSMutableDictionary *_tempMessages; // messageId -> Message
+    NSMutableDictionary* _chats; // chatName -> Chat
 }
 
 @property(assign) id<ChatManagerDelegate> delegate;
-@property NSMutableDictionary* chats; // chatName -> Chat
 
+- (NSArray *)chats;
 - (void)newMessage:(NSNumber *)messageId;
 - (void)bodyReceived:(NSString *)body forMessageId:(NSNumber *)messageId;
 - (void)chatNameReceived:(NSString *)chatName forMessageId:(NSNumber *)messageId;
