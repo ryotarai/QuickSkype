@@ -19,6 +19,10 @@
     return self;
 }
 
+- (BOOL)isSatisfied {
+    return _name && _friendlyName;
+}
+
 - (void)addMessage:(Message *)message {
     message.chat = self;
     [_messages setObject:message forKey:message.identity];

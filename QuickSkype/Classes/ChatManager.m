@@ -13,6 +13,7 @@
 @interface ChatManager ()
 
 - (void)_checkSatisfiedMessage:(Message *)message;
+- (void)_checkSatisfiedChat:(Chat *)chat;
 - (void)_addMessageToChat:(Message *)message;
 
 @end
@@ -38,6 +39,14 @@
         [self _addMessageToChat:message];
         if (_delegate && [_delegate respondsToSelector:@selector(chatManagerMessageSatisfied:)]) {
             [_delegate chatManagerMessageSatisfied:message];
+        }
+    }
+}
+
+- (void)_checkSatisfiedChat:(Chat *)chat {
+    if ([chat isSatisfied]) {
+        if (_delegate && [_delegate respondsToSelector:@selector(chatManagerChatSatisfied:)]) {
+            [_delegate chatManagerChatSatisfied:chat];
         }
     }
 }
@@ -74,6 +83,13 @@
     message.chatName = chatName;
     
     [self _checkSatisfiedMessage:message];
+}
+
+- (void)chatFriendlyNameReceived:(NSString *)friendlyName forChatName:(NSString *)chatName {
+    Chat *chat = [_chats objectForKey:chatName];
+    chat.friendlyName = friendlyName;
+    
+    [self _checkSatisfiedChat:chat];
 }
 
 

@@ -14,6 +14,11 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    _chats = [[NSMutableArray alloc] init];
+    
+}
+
+- (void)applicationWillTerminate:(NSNotification *)notification {
 }
 
 - (void)awakeFromNib {
@@ -21,11 +26,15 @@
     [_skypeClient setDelegate:self];
 }
 
+
 // PopUpButton
 - (void)reloadPopUpButton {
+    [_chats removeAllObjects];
     NSMenu *menu = [[NSMenu alloc] init];
     for (Chat *chat in [_skypeClient.chatManager chats]) {
-        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:chat.name action:NULL keyEquivalent:@""];
+        NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:chat.friendlyName action:NULL keyEquivalent:@""];
+        item.tag = [_chats count];
+        [_chats addObject:chat];
         [menu insertItem:item atIndex:0];
     }
     _chatsPopUpButton.menu = menu;
@@ -34,11 +43,18 @@
 // SkypeClientDelegate
 - (void)skypeClientNewMessage:(Message *)message {
     NSLog(@"skypeClientNewMessage: %@", message);
+}
+
+- (void)skypeClientNewChat:(Chat *)chat {
+    NSLog(@"skypeClientNewChat: %@", chat);
     [self reloadPopUpButton];
-    
 }
 
 - (IBAction)replyClicked:(id)sender {
-    NSLog(@"%@", self.textView.textStorage.string);
+    Chat *chat = [_chats objectAtIndex:_chatsPopUpButton.selectedTag];
+    [_skypeClient sendMessage:self.textView.textStorage.string toChat:chat];
 }
+
+
+
 @end

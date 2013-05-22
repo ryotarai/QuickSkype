@@ -15,6 +15,7 @@
 
 @optional
 - (void)skypeClientNewMessage:(Message *)message;
+- (void)skypeClientNewChat:(Chat *)chat;
 
 @end
 
@@ -23,5 +24,8 @@
 
 @property ChatManager* chatManager;
 @property(assign) id<SkypeClientDelegate> delegate;
+
+- (void)sendMessage:(NSString *)message toChat:(Chat *)chat;
+- (NSString *)sendSkypeCommand:(NSString *)command;
 
 @end

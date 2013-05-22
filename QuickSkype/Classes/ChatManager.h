@@ -13,6 +13,7 @@
 
 @optional
 - (void)chatManagerMessageSatisfied:(Message *)message;
+- (void)chatManagerChatSatisfied:(Chat *)chat;
 
 @end
 
@@ -27,5 +28,5 @@
 - (void)newMessage:(NSNumber *)messageId;
 - (void)bodyReceived:(NSString *)body forMessageId:(NSNumber *)messageId;
 - (void)chatNameReceived:(NSString *)chatName forMessageId:(NSNumber *)messageId;
-
+- (void)chatFriendlyNameReceived:(NSString *)friendlyName forChatName:(NSString *)chatName;
 @end

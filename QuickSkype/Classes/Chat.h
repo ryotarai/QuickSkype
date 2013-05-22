@@ -14,7 +14,9 @@
 }
 
 @property NSString *name;
+@property NSString *friendlyName;
 
+- (BOOL)isSatisfied;
 - (void)addMessage:(Message *)message;
 
 @end
