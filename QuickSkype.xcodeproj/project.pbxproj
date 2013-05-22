@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14165076174C738D0054DE36 /* Skype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14165075174C738D0054DE36 /* Skype.framework */; };
+		14165077174C73920054DE36 /* Skype.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 14165075174C738D0054DE36 /* Skype.framework */; };
 		A3B55C041748EB7D00D0976C /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B55C031748EB7D00D0976C /* Message.m */; };
 		A3B55C07174986A100D0976C /* SkypeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B55C06174986A100D0976C /* SkypeClient.m */; };
 		A3B55C0A174987C700D0976C /* ChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B55C09174987C700D0976C /* ChatManager.m */; };
@@ -21,7 +23,6 @@
 		A3EA5AB01748336500A59657 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3EA5A901748336400A59657 /* Cocoa.framework */; };
 		A3EA5AB81748336500A59657 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A3EA5AB61748336500A59657 /* InfoPlist.strings */; };
 		A3EA5ABB1748336500A59657 /* QuickSkypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EA5ABA1748336500A59657 /* QuickSkypeTests.m */; };
-		A3EA5ACF17483B3800A59657 /* Skype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3EA5ACE17483B3800A59657 /* Skype.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +35,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		14165073174C73420054DE36 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				14165077174C73920054DE36 /* Skype.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		14165075174C738D0054DE36 /* Skype.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Skype.framework; path = /Applications/Skype.app/Contents/Frameworks/Skype.framework; sourceTree = "<absolute>"; };
 		A3B55C021748EB7D00D0976C /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		A3B55C031748EB7D00D0976C /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		A3B55C05174986A100D0976C /* SkypeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkypeClient.h; sourceTree = "<group>"; };
@@ -62,7 +77,6 @@
 		A3EA5AB71748336500A59657 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A3EA5AB91748336500A59657 /* QuickSkypeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuickSkypeTests.h; sourceTree = "<group>"; };
 		A3EA5ABA1748336500A59657 /* QuickSkypeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuickSkypeTests.m; sourceTree = "<group>"; };
-		A3EA5ACE17483B3800A59657 /* Skype.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Skype.framework; path = /System/Library/Frameworks/Skype.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +85,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3EA5A911748336400A59657 /* Cocoa.framework in Frameworks */,
-				A3EA5ACF17483B3800A59657 /* Skype.framework in Frameworks */,
+				14165076174C738D0054DE36 /* Skype.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +138,7 @@
 		A3EA5A8F1748336400A59657 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A3EA5ACE17483B3800A59657 /* Skype.framework */,
+				14165075174C738D0054DE36 /* Skype.framework */,
 				A3EA5A901748336400A59657 /* Cocoa.framework */,
 				A3EA5AAE1748336500A59657 /* SenTestingKit.framework */,
 				A3EA5A921748336400A59657 /* Other Frameworks */,
@@ -195,6 +209,7 @@
 				A3EA5A891748336400A59657 /* Sources */,
 				A3EA5A8A1748336400A59657 /* Frameworks */,
 				A3EA5A8B1748336400A59657 /* Resources */,
+				14165073174C73420054DE36 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -421,12 +436,13 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SYSTEM_APPS_DIR)/Skype.app/Contents/Frameworks\"",
 					"\"$(SRCROOT)\"",
+					"\"$(SYSTEM_APPS_DIR)/Skype.app/Contents/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuickSkype/QuickSkype-Prefix.pch";
 				INFOPLIST_FILE = "QuickSkype/QuickSkype-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -438,12 +454,13 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SYSTEM_APPS_DIR)/Skype.app/Contents/Frameworks\"",
 					"\"$(SRCROOT)\"",
+					"\"$(SYSTEM_APPS_DIR)/Skype.app/Contents/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuickSkype/QuickSkype-Prefix.pch";
 				INFOPLIST_FILE = "QuickSkype/QuickSkype-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
