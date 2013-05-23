@@ -10,6 +10,7 @@
 #import <Skype/Skype.h>
 
 #import "ChatManager.h"
+#import "SkypeNotifier.h"
 
 @protocol SkypeClientDelegate <NSObject>
 
@@ -20,12 +21,13 @@
 @end
 
 @interface SkypeClient : NSObject
-<SkypeAPIDelegate, ChatManagerDelegate>
+<SkypeAPIDelegate, ChatManagerDelegate> {
+}
 
+@property SkypeNotifier *notifier;
 @property ChatManager* chatManager;
 @property(assign) id<SkypeClientDelegate> delegate;
 
-- (void)beForeground;
 - (void)sendMessage:(NSString *)message toChat:(Chat *)chat;
 - (NSString *)sendSkypeCommand:(NSString *)command;
 

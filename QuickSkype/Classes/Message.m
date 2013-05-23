@@ -11,7 +11,12 @@
 @implementation Message
 
 - (BOOL)isSatisfied {
-    return _identity && _chatName && _body;
+    return
+    _identity &&
+    _chatName &&
+    _fromHandle &&
+    _fromDisplayName &&
+    _body;
 }
 
 @end

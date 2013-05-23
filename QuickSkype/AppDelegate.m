@@ -99,7 +99,7 @@
         return;
     }
     Chat *chat = [_chats objectAtIndex:_chatsPopUpButton.selectedTag];
-//    [_skypeClient sendMessage:_textField.stringValue toChat:chat];
+    [_skypeClient sendMessage:_textField.stringValue toChat:chat];
     [_textField setStringValue:@""];
 }
 
@@ -117,6 +117,11 @@
     NSInteger tag = _chatsPopUpButton.selectedTag - 1;
     if (tag < 0) tag = _chats.count - 1;
     [_chatsPopUpButton selectItemWithTag:tag];
+}
+
+- (IBAction)editFilteringRules:(id)sender {
+    NSString *rulesFilePath = [_skypeClient.notifier rulesFilePath];
+    [[NSWorkspace sharedWorkspace] openFile:rulesFilePath];
 }
 
 

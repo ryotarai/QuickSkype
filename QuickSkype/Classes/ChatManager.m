@@ -85,6 +85,24 @@
     [self _checkSatisfiedMessage:message];
 }
 
+- (void)fromHandleReceived:(NSString *)handle forMessageId:(NSNumber *)messageId {
+    NSLog(@"fromHandleReceived: %@, %@", handle, messageId);
+    
+    Message *message = [_tempMessages objectForKey:messageId];
+    message.fromHandle = handle;
+    
+    [self _checkSatisfiedMessage:message];
+}
+
+- (void)fromDisplayNameReceived:(NSString *)displayName forMessageId:(NSNumber *)messageId {
+    NSLog(@"fromDisplayNameReceived: %@, %@", displayName, messageId);
+    
+    Message *message = [_tempMessages objectForKey:messageId];
+    message.fromDisplayName = displayName;
+    
+    [self _checkSatisfiedMessage:message];
+}
+
 - (void)chatFriendlyNameReceived:(NSString *)friendlyName forChatName:(NSString *)chatName {
     Chat *chat = [_chats objectForKey:chatName];
     chat.friendlyName = friendlyName;

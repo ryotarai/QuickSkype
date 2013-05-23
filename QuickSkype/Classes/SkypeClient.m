@@ -11,8 +11,7 @@
 
 @interface SkypeClient ()
 
-- (NSTextCheckingResult *)_regexMatch:(NSString *)target with:(NSString *)pattern;
-
+- (NSTextCheckingResult *)_regexMatch:(NSString *)target withPattern:(NSString *)pattern options:(NSRegularExpressionOptions)options;
 @end
 
 @implementation SkypeClient
@@ -26,12 +25,14 @@
         
         _chatManager = [[ChatManager alloc] init];
         _chatManager.delegate = self;
+        
+        _notifier = [[SkypeNotifier alloc] init];
     }
     return self;
 }
 
-- (NSTextCheckingResult *)_regexMatch:(NSString *)target with:(NSString *)pattern {
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:NULL];
+- (NSTextCheckingResult *)_regexMatch:(NSString *)target withPattern:(NSString *)pattern options:(NSRegularExpressionOptions)options  {
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:options error:NULL];
     NSTextCheckingResult *result = [regex firstMatchInString:target options:0 range:NSMakeRange(0, [target length])];
     return result;
 }
@@ -55,6 +56,7 @@
     if (_delegate && [_delegate respondsToSelector:@selector(skypeClientNewMessage:)]) {
         [_delegate skypeClientNewMessage:message];
     }
+    [_notifier notifyMessage:message];
 }
 
 - (void)chatManagerChatSatisfied:(Chat *)chat {
@@ -80,7 +82,7 @@
     
     NSTextCheckingResult *result;
     
-    result = [self _regexMatch:aNotificationString with:@"MESSAGE (\\d+) STATUS RECEIVED"];
+    result = [self _regexMatch:aNotificationString withPattern:@"MESSAGE (\\d+) STATUS RECEIVED" options:0];
     if (result) {
         NSString *messageIdStr = [aNotificationString substringWithRange:[result rangeAtIndex:1]];
         NSNumber *messageId = [NSNumber numberWithInteger:[messageIdStr integerValue]];
@@ -89,32 +91,54 @@
         
         [self sendSkypeCommand:[NSString stringWithFormat:@"GET CHATMESSAGE %@ BODY", messageIdStr]];
         [self sendSkypeCommand:[NSString stringWithFormat:@"GET CHATMESSAGE %@ CHATNAME", messageIdStr]];
+        [self sendSkypeCommand:[NSString stringWithFormat:@"GET CHATMESSAGE %@ FROM_HANDLE", messageIdStr]];
+        [self sendSkypeCommand:[NSString stringWithFormat:@"GET CHATMESSAGE %@ FROM_DISPNAME", messageIdStr]];
+        return;
     }
 
-    result = [self _regexMatch:aNotificationString with:@"MESSAGE (\\d+) BODY (.+)"];
+    result = [self _regexMatch:aNotificationString withPattern:@"MESSAGE (\\d+) BODY (.+)" options:NSRegularExpressionDotMatchesLineSeparators];
     if (result) {
         NSNumber *messageId = [NSNumber numberWithInteger:[[aNotificationString substringWithRange:[result rangeAtIndex:1]] integerValue]];
         NSString *body = [aNotificationString substringWithRange:[result rangeAtIndex:2]];
         
         [_chatManager bodyReceived:body forMessageId:messageId];
+        return;
     }
 
-    result = [self _regexMatch:aNotificationString with:@"MESSAGE (\\d+) CHATNAME (.+)"];
+    result = [self _regexMatch:aNotificationString withPattern:@"MESSAGE (\\d+) CHATNAME (.+)" options:0];
     if (result) {
         NSNumber *messageId = [NSNumber numberWithInteger:[[aNotificationString substringWithRange:[result rangeAtIndex:1]] integerValue]];
         NSString *chatName = [aNotificationString substringWithRange:[result rangeAtIndex:2]];
         
         [_chatManager chatNameReceived:chatName forMessageId:messageId];
-        
-        
+        return;
     }
     
-    result = [self _regexMatch:aNotificationString with:@"CHAT (.+) FRIENDLYNAME (.+)"];
+    result = [self _regexMatch:aNotificationString withPattern:@"MESSAGE (\\d+) FROM_HANDLE (.+)" options:0];
+    if (result) {
+        NSNumber *messageId = [NSNumber numberWithInteger:[[aNotificationString substringWithRange:[result rangeAtIndex:1]] integerValue]];
+        NSString *fromHandle = [aNotificationString substringWithRange:[result rangeAtIndex:2]];
+        
+        [_chatManager fromHandleReceived:fromHandle forMessageId:messageId];
+        return;
+    }
+    
+    result = [self _regexMatch:aNotificationString withPattern:@"MESSAGE (\\d+) FROM_DISPNAME (.+)" options:0];
+    if (result) {
+        NSNumber *messageId = [NSNumber numberWithInteger:[[aNotificationString substringWithRange:[result rangeAtIndex:1]] integerValue]];
+        NSString *fromDispName = [aNotificationString substringWithRange:[result rangeAtIndex:2]];
+        
+        [_chatManager fromDisplayNameReceived:fromDispName forMessageId:messageId];
+        return;
+    }
+    
+    result = [self _regexMatch:aNotificationString withPattern:@"CHAT (.+) FRIENDLYNAME (.+)" options:0];
     if (result) {
         NSString *chatName = [aNotificationString substringWithRange:[result rangeAtIndex:1]];
         NSString *friendlyName = [aNotificationString substringWithRange:[result rangeAtIndex:2]];
         
         [_chatManager chatFriendlyNameReceived:friendlyName forChatName:chatName];
+        return;
     }
 }
 

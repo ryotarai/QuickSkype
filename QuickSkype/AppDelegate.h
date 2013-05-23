@@ -28,6 +28,7 @@ NSTextFieldDelegate> {
 - (IBAction)replyClicked:(id)sender;
 - (IBAction)nextChat:(id)sender;
 - (IBAction)previousChat:(id)sender;
+- (IBAction)editFilteringRules:(id)sender;
 
 
 @end

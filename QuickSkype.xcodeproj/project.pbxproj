@@ -11,6 +11,13 @@
 		14165077174C73920054DE36 /* Skype.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 14165075174C738D0054DE36 /* Skype.framework */; };
 		141EB208174D9B76000A1340 /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 141EB207174D9B76000A1340 /* DDHotKeyCenter.m */; };
 		141EB20A174D9C60000A1340 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141EB209174D9C60000A1340 /* Carbon.framework */; };
+		A3166D11174E222F00779624 /* SkypeNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = A3166D10174E222F00779624 /* SkypeNotifier.m */; };
+		A3166D13174E384600779624 /* filter.rb in Resources */ = {isa = PBXBuildFile; fileRef = A3166D12174E384600779624 /* filter.rb */; };
+		A3166D15174E417C00779624 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3166D14174E417C00779624 /* Growl.framework */; };
+		A3166D16174E430A00779624 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3166D14174E417C00779624 /* Growl.framework */; };
+		A3166D18174EC03900779624 /* sample_rule.rb in Resources */ = {isa = PBXBuildFile; fileRef = A3166D17174EC03900779624 /* sample_rule.rb */; };
+		A3166D1C174ED9A300779624 /* QuickSkype.iconset in Resources */ = {isa = PBXBuildFile; fileRef = A3166D1B174ED9A300779624 /* QuickSkype.iconset */; };
+		A3166D1E174EDA9400779624 /* icon_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = A3166D1D174EDA9400779624 /* icon_256x256.png */; };
 		A3B55C041748EB7D00D0976C /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B55C031748EB7D00D0976C /* Message.m */; };
 		A3B55C07174986A100D0976C /* SkypeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B55C06174986A100D0976C /* SkypeClient.m */; };
 		A3B55C0A174987C700D0976C /* ChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B55C09174987C700D0976C /* ChatManager.m */; };
@@ -45,6 +52,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				14165077174C73920054DE36 /* Skype.framework in CopyFiles */,
+				A3166D16174E430A00779624 /* Growl.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +63,13 @@
 		141EB206174D9B76000A1340 /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyCenter.h; sourceTree = "<group>"; };
 		141EB207174D9B76000A1340 /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyCenter.m; sourceTree = "<group>"; };
 		141EB209174D9C60000A1340 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		A3166D0F174E222F00779624 /* SkypeNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkypeNotifier.h; sourceTree = "<group>"; };
+		A3166D10174E222F00779624 /* SkypeNotifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkypeNotifier.m; sourceTree = "<group>"; };
+		A3166D12174E384600779624 /* filter.rb */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = text.script.ruby; path = filter.rb; sourceTree = "<group>"; tabWidth = 2; };
+		A3166D14174E417C00779624 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Growl.framework; path = QuickSkype/Framework/Growl.framework; sourceTree = "<group>"; };
+		A3166D17174EC03900779624 /* sample_rule.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = sample_rule.rb; sourceTree = "<group>"; };
+		A3166D1B174ED9A300779624 /* QuickSkype.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = QuickSkype.iconset; sourceTree = "<group>"; };
+		A3166D1D174EDA9400779624 /* icon_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_256x256.png; path = QuickSkype.iconset/icon_256x256.png; sourceTree = "<group>"; };
 		A3B55C021748EB7D00D0976C /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		A3B55C031748EB7D00D0976C /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		A3B55C05174986A100D0976C /* SkypeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkypeClient.h; sourceTree = "<group>"; };
@@ -92,6 +107,7 @@
 				141EB20A174D9C60000A1340 /* Carbon.framework in Frameworks */,
 				A3EA5A911748336400A59657 /* Cocoa.framework in Frameworks */,
 				14165076174C738D0054DE36 /* Skype.framework in Frameworks */,
+				A3166D15174E417C00779624 /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +143,8 @@
 				A3B55C09174987C700D0976C /* ChatManager.m */,
 				A3B55C0B1749917C00D0976C /* Chat.h */,
 				A3B55C0C1749917C00D0976C /* Chat.m */,
+				A3166D0F174E222F00779624 /* SkypeNotifier.h */,
+				A3166D10174E222F00779624 /* SkypeNotifier.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -153,6 +171,7 @@
 		A3EA5A8F1748336400A59657 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3166D14174E417C00779624 /* Growl.framework */,
 				141EB209174D9C60000A1340 /* Carbon.framework */,
 				14165075174C738D0054DE36 /* Skype.framework */,
 				A3EA5A901748336400A59657 /* Cocoa.framework */,
@@ -188,6 +207,10 @@
 		A3EA5A971748336500A59657 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A3166D1D174EDA9400779624 /* icon_256x256.png */,
+				A3166D1B174ED9A300779624 /* QuickSkype.iconset */,
+				A3166D17174EC03900779624 /* sample_rule.rb */,
+				A3166D12174E384600779624 /* filter.rb */,
 				A3EA5A981748336500A59657 /* QuickSkype-Info.plist */,
 				A3EA5A991748336500A59657 /* InfoPlist.strings */,
 				A3EA5A9C1748336500A59657 /* main.m */,
@@ -291,6 +314,10 @@
 				A3EA5A9B1748336500A59657 /* InfoPlist.strings in Resources */,
 				A3EA5AA11748336500A59657 /* Credits.rtf in Resources */,
 				A3EA5AA71748336500A59657 /* MainMenu.xib in Resources */,
+				A3166D13174E384600779624 /* filter.rb in Resources */,
+				A3166D18174EC03900779624 /* sample_rule.rb in Resources */,
+				A3166D1C174ED9A300779624 /* QuickSkype.iconset in Resources */,
+				A3166D1E174EDA9400779624 /* icon_256x256.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +359,7 @@
 				A3B55C0A174987C700D0976C /* ChatManager.m in Sources */,
 				A3B55C0D1749917C00D0976C /* Chat.m in Sources */,
 				141EB208174D9B76000A1340 /* DDHotKeyCenter.m in Sources */,
+				A3166D11174E222F00779624 /* SkypeNotifier.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +484,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SYSTEM_APPS_DIR)/Skype.app/Contents/Frameworks\"",
+					"\"$(SRCROOT)/QuickSkype/Framework\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuickSkype/QuickSkype-Prefix.pch";
@@ -474,6 +503,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SYSTEM_APPS_DIR)/Skype.app/Contents/Frameworks\"",
+					"\"$(SRCROOT)/QuickSkype/Framework\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuickSkype/QuickSkype-Prefix.pch";

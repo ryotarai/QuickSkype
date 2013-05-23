@@ -15,6 +15,8 @@
 @property NSNumber* identity;
 @property NSString* chatName;
 @property NSString* body;
+@property NSString* fromHandle;
+@property NSString* fromDisplayName;
 @property Chat* chat;
 
 - (BOOL)isSatisfied;
