@@ -25,6 +25,7 @@
 @property ChatManager* chatManager;
 @property(assign) id<SkypeClientDelegate> delegate;
 
+- (void)beForeground;
 - (void)sendMessage:(NSString *)message toChat:(Chat *)chat;
 - (NSString *)sendSkypeCommand:(NSString *)command;
 

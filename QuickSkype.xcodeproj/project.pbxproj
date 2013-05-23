@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		14165076174C738D0054DE36 /* Skype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14165075174C738D0054DE36 /* Skype.framework */; };
 		14165077174C73920054DE36 /* Skype.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 14165075174C738D0054DE36 /* Skype.framework */; };
+		141EB208174D9B76000A1340 /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 141EB207174D9B76000A1340 /* DDHotKeyCenter.m */; };
+		141EB20A174D9C60000A1340 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 141EB209174D9C60000A1340 /* Carbon.framework */; };
 		A3B55C041748EB7D00D0976C /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B55C031748EB7D00D0976C /* Message.m */; };
 		A3B55C07174986A100D0976C /* SkypeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B55C06174986A100D0976C /* SkypeClient.m */; };
 		A3B55C0A174987C700D0976C /* ChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B55C09174987C700D0976C /* ChatManager.m */; };
@@ -50,6 +52,9 @@
 
 /* Begin PBXFileReference section */
 		14165075174C738D0054DE36 /* Skype.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Skype.framework; path = /Applications/Skype.app/Contents/Frameworks/Skype.framework; sourceTree = "<absolute>"; };
+		141EB206174D9B76000A1340 /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyCenter.h; sourceTree = "<group>"; };
+		141EB207174D9B76000A1340 /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyCenter.m; sourceTree = "<group>"; };
+		141EB209174D9C60000A1340 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		A3B55C021748EB7D00D0976C /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		A3B55C031748EB7D00D0976C /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		A3B55C05174986A100D0976C /* SkypeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkypeClient.h; sourceTree = "<group>"; };
@@ -84,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				141EB20A174D9C60000A1340 /* Carbon.framework in Frameworks */,
 				A3EA5A911748336400A59657 /* Cocoa.framework in Frameworks */,
 				14165076174C738D0054DE36 /* Skype.framework in Frameworks */,
 			);
@@ -101,6 +107,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		141EB205174D9B76000A1340 /* DDHotKey */ = {
+			isa = PBXGroup;
+			children = (
+				141EB206174D9B76000A1340 /* DDHotKeyCenter.h */,
+				141EB207174D9B76000A1340 /* DDHotKeyCenter.m */,
+			);
+			path = DDHotKey;
+			sourceTree = "<group>";
+		};
 		A3B55C011748EB7000D0976C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +153,7 @@
 		A3EA5A8F1748336400A59657 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				141EB209174D9C60000A1340 /* Carbon.framework */,
 				14165075174C738D0054DE36 /* Skype.framework */,
 				A3EA5A901748336400A59657 /* Cocoa.framework */,
 				A3EA5AAE1748336500A59657 /* SenTestingKit.framework */,
@@ -159,6 +175,7 @@
 		A3EA5A961748336400A59657 /* QuickSkype */ = {
 			isa = PBXGroup;
 			children = (
+				141EB205174D9B76000A1340 /* DDHotKey */,
 				A3B55C011748EB7000D0976C /* Classes */,
 				A3EA5AA21748336500A59657 /* AppDelegate.h */,
 				A3EA5AA31748336500A59657 /* AppDelegate.m */,
@@ -314,6 +331,7 @@
 				A3B55C07174986A100D0976C /* SkypeClient.m in Sources */,
 				A3B55C0A174987C700D0976C /* ChatManager.m in Sources */,
 				A3B55C0D1749917C00D0976C /* Chat.m in Sources */,
+				141EB208174D9B76000A1340 /* DDHotKeyCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

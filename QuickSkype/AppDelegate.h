@@ -10,20 +10,24 @@
 #import "SkypeClient.h"
 
 @interface AppDelegate : NSObject
-<NSApplicationDelegate, SkypeClientDelegate> {
+<NSApplicationDelegate,
+SkypeClientDelegate,
+NSTextFieldDelegate> {
     SkypeClient *_skypeClient;
     NSMutableArray *_chats;
     id _hotKeyEventMonitor;
 }
 
 
-@property (unsafe_unretained) IBOutlet NSTextView *textView;
+@property (weak) IBOutlet NSTextField *textField;
 @property (assign) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSPopUpButton *chatsPopUpButton;
 
 
 
 - (IBAction)replyClicked:(id)sender;
+- (IBAction)nextChat:(id)sender;
+- (IBAction)previousChat:(id)sender;
 
 
 @end
