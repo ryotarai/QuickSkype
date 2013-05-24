@@ -10,6 +10,7 @@ Features
 * Notifier with filtering rules
   * To edit filtering rules, click `Notifications` -> `Edit Filtering Rules` in menu
   * Filtering rule file is a ruby script.
+  * Be sure to disable skype built-in notification.
 
 Install
 ----------
