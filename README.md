@@ -12,7 +12,7 @@ Features
   * Filtering rule file is a ruby script.
   * Be sure to disable skype built-in notification.
 
-Install
+Installation
 ----------
 1. Download [QuickSkype.zip](https://github.com/ryotarai/QuickSkype/raw/master/bin/QuickSkype.zip)
 2. Unzip it
