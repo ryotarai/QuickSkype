@@ -11,17 +11,16 @@
 
 @interface AppDelegate : NSObject
 <NSApplicationDelegate,
-SkypeClientDelegate,
-NSTextFieldDelegate> {
+SkypeClientDelegate> {
     SkypeClient *_skypeClient;
     NSMutableArray *_chats;
     id _hotKeyEventMonitor;
 }
 
 
-@property (weak) IBOutlet NSTextField *textField;
 @property (assign) IBOutlet NSWindow *window;
 @property (weak) IBOutlet NSPopUpButton *chatsPopUpButton;
+@property (unsafe_unretained) IBOutlet NSTextView *textView;
 
 
 
@@ -29,6 +28,8 @@ NSTextFieldDelegate> {
 - (IBAction)nextChat:(id)sender;
 - (IBAction)previousChat:(id)sender;
 - (IBAction)editFilteringRules:(id)sender;
+- (IBAction)quoteLastMessage:(id)sender;
+- (IBAction)showPreferences:(id)sender;
 
 
 @end

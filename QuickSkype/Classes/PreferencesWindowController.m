@@ -14,15 +14,15 @@
 
 @implementation PreferencesWindowController
 
-- (id)initWithWindow:(NSWindow *)window
+- (id)init
 {
-    self = [super initWithWindow:window];
+    self = [super initWithWindowNibName:@"PreferencesWindow"];
     if (self) {
-        // Initialization code here.
+        
     }
-    
     return self;
 }
+
 
 - (void)windowDidLoad
 {

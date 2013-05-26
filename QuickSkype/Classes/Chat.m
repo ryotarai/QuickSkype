@@ -15,6 +15,7 @@
     self = [super init];
     if (self) {
         _messages = [[NSMutableDictionary alloc] init];
+        _messageIds = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -23,9 +24,19 @@
     return _name && _friendlyName;
 }
 
+- (NSArray *)latestMessages {
+    NSEnumerator *messageIds = [_messageIds reverseObjectEnumerator];
+    NSMutableArray *messages = [[NSMutableArray alloc] init];
+    for (NSNumber *messageId in messageIds) {
+        [messages addObject:[_messages objectForKey:messageId]];
+    }
+    return [messages copy];
+}
+
 - (void)addMessage:(Message *)message {
     message.chat = self;
     [_messages setObject:message forKey:message.identity];
+    [_messageIds addObject:message.identity];
 }
 
 @end

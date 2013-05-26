@@ -30,5 +30,6 @@
 - (void)chatNameReceived:(NSString *)chatName forMessageId:(NSNumber *)messageId;
 - (void)fromHandleReceived:(NSString *)handle forMessageId:(NSNumber *)messageId;
 - (void)fromDisplayNameReceived:(NSString *)displayName forMessageId:(NSNumber *)messageId;
+- (void)timestampReceived:(NSNumber *)timestamp forMessageId:(NSNumber *)messageId;
 - (void)chatFriendlyNameReceived:(NSString *)friendlyName forChatName:(NSString *)chatName;
 @end

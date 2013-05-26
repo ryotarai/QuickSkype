@@ -16,6 +16,7 @@
     _chatName &&
     _fromHandle &&
     _fromDisplayName &&
+    _timestamp &&
     _body;
 }
 

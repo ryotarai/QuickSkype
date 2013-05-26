@@ -93,6 +93,8 @@
         [self sendSkypeCommand:[NSString stringWithFormat:@"GET CHATMESSAGE %@ CHATNAME", messageIdStr]];
         [self sendSkypeCommand:[NSString stringWithFormat:@"GET CHATMESSAGE %@ FROM_HANDLE", messageIdStr]];
         [self sendSkypeCommand:[NSString stringWithFormat:@"GET CHATMESSAGE %@ FROM_DISPNAME", messageIdStr]];
+        [self sendSkypeCommand:[NSString stringWithFormat:@"GET CHATMESSAGE %@ TIMESTAMP", messageIdStr]];
+        
         return;
     }
 
@@ -129,6 +131,15 @@
         NSString *fromDispName = [aNotificationString substringWithRange:[result rangeAtIndex:2]];
         
         [_chatManager fromDisplayNameReceived:fromDispName forMessageId:messageId];
+        return;
+    }
+    
+    result = [self _regexMatch:aNotificationString withPattern:@"MESSAGE (\\d+) TIMESTAMP (.+)" options:0];
+    if (result) {
+        NSNumber *messageId = [NSNumber numberWithInteger:[[aNotificationString substringWithRange:[result rangeAtIndex:1]] integerValue]];
+        NSNumber *timestamp = [NSNumber numberWithInteger:[[aNotificationString substringWithRange:[result rangeAtIndex:2]] integerValue]];
+        
+        [_chatManager timestampReceived:timestamp forMessageId:messageId];
         return;
     }
     

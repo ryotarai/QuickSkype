@@ -18,6 +18,8 @@
 		A3166D18174EC03900779624 /* sample_rule.rb in Resources */ = {isa = PBXBuildFile; fileRef = A3166D17174EC03900779624 /* sample_rule.rb */; };
 		A3166D1C174ED9A300779624 /* QuickSkype.iconset in Resources */ = {isa = PBXBuildFile; fileRef = A3166D1B174ED9A300779624 /* QuickSkype.iconset */; };
 		A3166D1E174EDA9400779624 /* icon_256x256.png in Resources */ = {isa = PBXBuildFile; fileRef = A3166D1D174EDA9400779624 /* icon_256x256.png */; };
+		A3684158174FA78D0049B983 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3684156174FA78D0049B983 /* PreferencesWindowController.m */; };
+		A3684159174FA78D0049B983 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3684157174FA78D0049B983 /* PreferencesWindow.xib */; };
 		A3B55C041748EB7D00D0976C /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B55C031748EB7D00D0976C /* Message.m */; };
 		A3B55C07174986A100D0976C /* SkypeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B55C06174986A100D0976C /* SkypeClient.m */; };
 		A3B55C0A174987C700D0976C /* ChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B55C09174987C700D0976C /* ChatManager.m */; };
@@ -70,6 +72,9 @@
 		A3166D17174EC03900779624 /* sample_rule.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = sample_rule.rb; sourceTree = "<group>"; };
 		A3166D1B174ED9A300779624 /* QuickSkype.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = QuickSkype.iconset; sourceTree = "<group>"; };
 		A3166D1D174EDA9400779624 /* icon_256x256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_256x256.png; path = QuickSkype.iconset/icon_256x256.png; sourceTree = "<group>"; };
+		A3684155174FA78D0049B983 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesWindowController.h; sourceTree = "<group>"; };
+		A3684156174FA78D0049B983 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindowController.m; sourceTree = "<group>"; };
+		A3684157174FA78D0049B983 /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
 		A3B55C021748EB7D00D0976C /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		A3B55C031748EB7D00D0976C /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		A3B55C05174986A100D0976C /* SkypeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkypeClient.h; sourceTree = "<group>"; };
@@ -145,6 +150,9 @@
 				A3B55C0C1749917C00D0976C /* Chat.m */,
 				A3166D0F174E222F00779624 /* SkypeNotifier.h */,
 				A3166D10174E222F00779624 /* SkypeNotifier.m */,
+				A3684155174FA78D0049B983 /* PreferencesWindowController.h */,
+				A3684156174FA78D0049B983 /* PreferencesWindowController.m */,
+				A3684157174FA78D0049B983 /* PreferencesWindow.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -318,6 +326,7 @@
 				A3166D18174EC03900779624 /* sample_rule.rb in Resources */,
 				A3166D1C174ED9A300779624 /* QuickSkype.iconset in Resources */,
 				A3166D1E174EDA9400779624 /* icon_256x256.png in Resources */,
+				A3684159174FA78D0049B983 /* PreferencesWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +369,7 @@
 				A3B55C0D1749917C00D0976C /* Chat.m in Sources */,
 				141EB208174D9B76000A1340 /* DDHotKeyCenter.m in Sources */,
 				A3166D11174E222F00779624 /* SkypeNotifier.m in Sources */,
+				A3684158174FA78D0049B983 /* PreferencesWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

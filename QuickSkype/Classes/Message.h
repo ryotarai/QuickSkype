@@ -17,6 +17,8 @@
 @property NSString* body;
 @property NSString* fromHandle;
 @property NSString* fromDisplayName;
+@property NSDate* timestamp;
+
 @property Chat* chat;
 
 - (BOOL)isSatisfied;

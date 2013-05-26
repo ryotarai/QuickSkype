@@ -103,6 +103,13 @@
     [self _checkSatisfiedMessage:message];
 }
 
+- (void)timestampReceived:(NSNumber *)timestamp forMessageId:(NSNumber *)messageId {
+    Message *message = [_tempMessages objectForKey:messageId];
+    message.timestamp = [NSDate dateWithTimeIntervalSince1970:(NSTimeInterval)[timestamp doubleValue]];
+    
+    [self _checkSatisfiedMessage:message];
+}
+
 - (void)chatFriendlyNameReceived:(NSString *)friendlyName forChatName:(NSString *)chatName {
     Chat *chat = [_chats objectForKey:chatName];
     chat.friendlyName = friendlyName;

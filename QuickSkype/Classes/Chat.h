@@ -11,6 +11,7 @@
 
 @interface Chat : NSObject {
     NSMutableDictionary *_messages;
+    NSMutableArray *_messageIds;
 }
 
 @property NSString *name;
@@ -18,5 +19,6 @@
 
 - (BOOL)isSatisfied;
 - (void)addMessage:(Message *)message;
+- (NSArray *)latestMessages;
 
 @end

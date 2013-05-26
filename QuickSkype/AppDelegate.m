@@ -9,6 +9,11 @@
 #import "DDHotKeyCenter.h"
 #import "AppDelegate.h"
 #import "Chat.h"
+#import "PreferencesWindowController.h"
+
+@interface AppDelegate ()
+- (Chat *)_selectedChat;
+@end
 
 @implementation AppDelegate
 
@@ -24,10 +29,6 @@
 }
 
 - (void)awakeFromNib {
-    _textField.delegate = self;
-    
-    
-
     _skypeClient = [[SkypeClient alloc] init];
     [_skypeClient setDelegate:self];
     
@@ -43,30 +44,8 @@
 }
 
 
-
-- (BOOL)control:(NSControl*)control textView:(NSTextView*)textView doCommandBySelector:(SEL)commandSelector
-{
-    BOOL result = NO;
-    
-    if (commandSelector == @selector(insertNewline:)) {
-        // new line action:
-        // always insert a line-break character and don’t cause the receiver to end editing
-        [textView insertNewlineIgnoringFieldEditor:self];
-        result = YES;
-    }
-//    } else if (commandSelector == @selector(noop:)) {
-//        NSEvent *event = [NSApp currentEvent];
-//        NSLog(@"%@", event);
-//        NSUInteger flags = (event.modifierFlags & NSDeviceIndependentModifierFlagsMask);
-//        BOOL isCommand = (flags & NSCommandKeyMask) == NSCommandKeyMask;
-//        BOOL isEnter = (event.keyCode == 0x24); // VK_RETURN
-//        if (isCommand && isEnter) {
-//            [self replyClicked:nil];
-//        }
-//    }
-
-    
-    return result;
+- (Chat *)_selectedChat {
+    return [_chats objectAtIndex:_chatsPopUpButton.selectedTag];
 }
 
 // PopUpButton
@@ -98,9 +77,9 @@
         NSLog(@"No chat is selected");
         return;
     }
-    Chat *chat = [_chats objectAtIndex:_chatsPopUpButton.selectedTag];
-    [_skypeClient sendMessage:_textField.stringValue toChat:chat];
-    [_textField setStringValue:@""];
+    Chat *chat = [self _selectedChat];
+    [_skypeClient sendMessage:_textView.string toChat:chat];
+    [_textView setString:@""];
 }
 
 - (IBAction)nextChat:(id)sender {
@@ -122,6 +101,23 @@
 - (IBAction)editFilteringRules:(id)sender {
     NSString *rulesFilePath = [_skypeClient.notifier rulesFilePath];
     [[NSWorkspace sharedWorkspace] openFile:rulesFilePath];
+}
+
+- (IBAction)quoteLastMessage:(id)sender {
+    Message *latestMessage = [[[self _selectedChat] latestMessages] objectAtIndex:0];
+    NSString *body = [[@"> " stringByAppendingString:[latestMessage.body stringByReplacingOccurrencesOfString:@"\n" withString:@"\n> "]] stringByAppendingString:@"\n"];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd', at 'HH:mm";
+    NSString *quote = [NSString stringWithFormat:@"On %@, %@ wrote:\n%@",
+                       [dateFormatter stringFromDate:latestMessage.timestamp],
+                       latestMessage.fromDisplayName,
+                       body];
+    [_textView insertText:quote];
+}
+
+- (IBAction)showPreferences:(id)sender {
+    PreferencesWindowController *controller = [[PreferencesWindowController alloc] init];
+    [controller showWindow:self];
 }
 
 
